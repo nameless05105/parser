@@ -44,18 +44,22 @@ def lookup(driver, query, auth, host, channel):
             driver.find_element_by_id("logon").click()
             WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div[data-test-id='Cashier']"))).click()
             time.sleep(5)
-            driver.find_element_by_class_name("sc-gtssRu").click()
+            WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div[data-test-id='000D3A240C719A8711E68ABA13F9FBD7']"))).click()
+            time.sleep(5)
+            driver.find_element_by_class_name("sc-dlnjPT").click()
             time.sleep(5)
             alert = driver.switch_to.alert.accept()
             time.sleep(5)
-            driver.find_element_by_class_name("sc-jSFkmK").click()
+            driver.find_element_by_class_name("sc-gKAblj").click()
         while True:
             print("FIND ELEMENTS")
             orders = []
-            for block in driver.find_elements_by_class_name('sc-gtssRu'):
-                id_order = block.find_element_by_class_name('sc-hxyAyv jRezsW')
-                status = block.find_element_by_class_name('sc-iTVIwl')
-                time_order = block.find_element_by_class_name('sc-eYKbNw')
+            for block in driver.find_elements_by_class_name('sc-gGqFZn'):
+                # id_order = block.find_element(By.XPATH, '//span') 
+                # print(id_order)
+                id_order = block.find_element_by_class_name('sc-gggqho')
+                status = block.find_element_by_class_name('sc-iBzFoy')
+                time_order = block.find_element_by_class_name('sc-dPykP')
                 print('GET INFORMATION')
                 order = {}
                 order['order'] = id_order.text
